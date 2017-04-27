@@ -7,8 +7,8 @@ enchant();
 /*
  * 定数
  */
-var SCREEN_WIDTH    = 320;
-var SCREEN_HEIGHT   = 320;
+var SCREEN_WIDTH    = 640;
+var SCREEN_HEIGHT   = 960;
 
 
 /*
@@ -19,8 +19,8 @@ window.onload = function() {
     var game = new Game(SCREEN_WIDTH, SCREEN_HEIGHT);
 
     game.preload(
-    		'image/start.png',
-    		'image/start.png'
+    		'image/build_A.png',
+    		'image/build_B.png'
     );
 
 
@@ -32,10 +32,10 @@ window.onload = function() {
 
         // ボタンを生成, 表示(ダーク)
         var button = new Button("Default Button");
-        button.height = 100;
-        button.width = 250;
-        button.image = game.assets['image/start.png'];
-        button.pushedimage =  game.assets["images/clear.png"];
+        button.height = 164;
+        button.width = 276;
+        button.image = game.assets['image/build_A.png'];
+        button.pushedimage =  game.assets["image/build_B.png"];
         button.ontouchend = function() { alert('「Edit」がタップされました。');};
 
 

@@ -20,12 +20,12 @@ window.onload = function() {
 
     // ブラウザのLocalStorageにデータを保存するデバック機能を有効にする
     // 9leapのデータベースに保存する場合は、「false」
-    enchant.nineleap.memory.LocalStorage.DEBUG_MODE = true;
+//    enchant.nineleap.memory.LocalStorage.DEBUG_MODE = true;
 
     // ゲームIDを設定する
     // 9leapのデータベースに保存する場合は、
     // 9leapの「ゲームID」(9leapにアップロードしたゲームのURLの末尾の数字)を設定する
-    enchant.nineleap.memory.LocalStorage.GAME_ID = 'kintaro';
+//    enchant.nineleap.memory.LocalStorage.GAME_ID = 'kintaro';
 
     game.preload(
     		'image/build_A.png',
@@ -48,10 +48,29 @@ window.onload = function() {
     );
 
 
+  var num = 1;
+  // データの取得
+  //localStorage.setItem('access_count', num);
+  var playdata =localStorage.getItem('playerStatus') ;
+  localStorage.setItem('playerStatus', null);
+  alert(playdata);
+  if(localStorage.getItem('playerStatus') != null){
+	  	playdata = JSON.parse(localStorage.getItem('playerStatus'));
+	    playerStatus.lv = playdata.lv;
+	    playerStatus.hp = playerStatus.hp;
+	    playerStatus.exp = playerStatus.exp;
+	    playerStatus.attack = playerStatus.attack;
+	    playerStatus.defince = playerStatus.defince;
+	    playerStatus.coin = playerStatus.coin;
+	    playerStatus.weaponRight = playerStatus.weaponRight;
+	    playerStatus.weaponLeft = playerStatus.weaponLeft;
+	    playerStatus.item = playerStatus.item;
+  }
 
+alert(playdata);
 
     // 自分のデータを読み込む
-    game.memory.player.preload();
+//    game.memory.player.preload();
 
 
     // ロード完了時の処理
@@ -123,25 +142,25 @@ window.onload = function() {
 
         // セーブラベル(タッチでセーブを実行するラベル)を作成する
         var savelabel = new MutableText(16, 320 -16);
+        savelabel.text ='save';
+
         // セーブラベルの「touchstart」イベントリスナ
         savelabel.addEventListener('touchstart', function(e) {
           this.backgroundColor = '#F0F0F0';
         });
+
         // セーブラベルの「touchend」イベントリスナ
         savelabel.addEventListener('touchend', function(e) {
           this.backgroundColor = '';
 
           // データの保存処理
-
-          // ライフをとスコアをメモリに書き込む
-          game.memory.player.data.life = core.life;
-          game.memory.player.data.score = core.score;
-          // 保存を実行する
-          game.memory.update();
+          localStorage.setItem('playerStatus', JSON.stringify(playerStatus));
+          var doun = localStorage.getItem('playerStatus');
+          alert(doun);
 
         });
         // 「rootScene」にセーブラベルを追加する
-        game.rootScene.addChild(savelabel);
+        scene.addChild(savelabel);
 
     };
 

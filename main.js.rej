@@ -1,0 +1,19 @@
+diff a/main.js b/main.js	(rejected hunks)
+@@ -18,15 +18,17 @@
+      // ゲームオブジェクトを生成
+      var game = new Game(SCREEN_WIDTH, SCREEN_HEIGHT);
+  
++ 
+ +    // ブラウザのLocalStorageにデータを保存するデバック機能を有効にする
+ +    // 9leapのデータベースに保存する場合は、「false」
+ +//    enchant.nineleap.memory.LocalStorage.DEBUG_MODE = true;
+ +
+ +    // ゲームIDを設定する
+ +    // 9leapのデータベースに保存する場合は、
+ +    // 9leapの「ゲームID」(9leapにアップロードしたゲームのURLの末尾の数字)を設定する
+ +//    enchant.nineleap.memory.LocalStorage.GAME_ID = 'kintaro';
+ +
+++
+      game.preload(
+      		'image/build_A.png',
+      		'image/build_B.png',

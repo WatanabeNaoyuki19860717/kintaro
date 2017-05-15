@@ -52,9 +52,9 @@ window.onload = function() {
   // データの取得
   //localStorage.setItem('access_count', num);
   var playdata =localStorage.getItem('playerStatus') ;
-  localStorage.setItem('playerStatus', null);
+  //localStorage.setItem('playerStatus', null);
   alert(playdata);
-  if(localStorage.getItem('playerStatus') != null){
+  if(playdata){
 	  	playdata = JSON.parse(localStorage.getItem('playerStatus'));
 	    playerStatus.lv = playdata.lv;
 	    playerStatus.hp = playerStatus.hp;
@@ -65,6 +65,7 @@ window.onload = function() {
 	    playerStatus.weaponRight = playerStatus.weaponRight;
 	    playerStatus.weaponLeft = playerStatus.weaponLeft;
 	    playerStatus.item = playerStatus.item;
+	    alert("読み込み完了");
   }
 
 alert(playdata);

@@ -61,8 +61,10 @@ window.onload = function() {
   //localStorage.setItem('playerStatus', null);
   alert(playdata);
   if(playdata){
-	  	playdata = JSON.parse(localStorage.getItem('playerStatus'));
-	    playerStatus.lv = playdata.lv;
+	  	var playdatas = JSON.parse(playdata);
+	  	alert( playdatas["lv"]);
+	  	alert( playerStatus.lv );
+	    playerStatus["lv"] = playdatas["lv"];
 	    playerStatus.hp = playerStatus.hp;
 	    playerStatus.exp = playerStatus.exp;
 	    playerStatus.attack = playerStatus.attack;
